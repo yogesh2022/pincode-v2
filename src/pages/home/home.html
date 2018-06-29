@@ -1,18 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Pincode</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
+<ion-content>
+  <ion-searchbar type="tel" (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let item of rowItem">
-      {{ item.pincode }}
-    </button>  
+    <button ion-item *ngFor="let item of rowItem" [navPush]="pushPage" [navParams]="item">
+      <h2><strong>{{ item.officename }}</strong></h2>
+      <h4>{{ item.Districtname }}, {{item.statename}}</h4>
+      <h4><ion-icon name="call"></ion-icon> &nbsp;&nbsp;{{ item.Telephone }}</h4>
+    </button>
   </ion-list>
 </ion-content>
